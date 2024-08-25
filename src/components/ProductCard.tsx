@@ -44,7 +44,7 @@ const ProductCard = ({ product }: Props) => {
           {product?.rating} <FaStar className="text-lightOrange" />
         </p>
         <SideBar />
-        <AddToCartButton />
+        <AddToCartButton product={product} />
       </div>
       <div className="border-t border-t-productsBg py-2 px-4">
         <p className="text-sm font-medium capitalize text-gray-600">

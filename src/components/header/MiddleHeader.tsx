@@ -8,12 +8,24 @@ import { RiMenu3Fill, RiUserLine } from "react-icons/ri";
 import { FiHeart } from "react-icons/fi";
 import { BsBag } from "react-icons/bs";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { StateType } from "../../../type";
+import { addUser, removeUser } from "@/app/redux/shofySlice";
 
 const MiddleHeader = () => {
   const [searchValue, setSearchValue] = useState("");
   const { data: session } = useSession();
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state: StateType) => state?.shopy);
+  useEffect(() => {
+    if (session?.user) {
+      dispatch(addUser(session?.user));
+    } else {
+      dispatch(removeUser());
+    }
+  }, [session?.user]);
+
   return (
     <Container className="flex items-center justify-between gap-5 py-5">
       <div>
@@ -39,7 +51,7 @@ const MiddleHeader = () => {
         )}
 
         <span
-          className="absolute top-0 right-0 text-xl text-white 
+          className="absolute top-0 right-0 text-xl text-white
         w-10 h-full flex items-center justify-center   bg-themeColor/80
         hover:bg-themeColor cursor-pointer duration-200 "
         >
@@ -100,16 +112,14 @@ const MiddleHeader = () => {
           </Link>
           <Link
             href={"/cart"}
-            className="relative hover:text-themeColor duration-200"
+            className="relative hover:text-themeColor duration-200 text-2xl "
           >
-            <span className="text-2xl ">
-              <BsBag />
-            </span>
+            <BsBag />
             <span
               className="w-5 h-5 bg-themeColor rounded-full flex items-center justify-center
-             text-white text-xs absolute -top-2 -right-2 "
+              text-white text-xs absolute -top-2 -right-2 "
             >
-              0
+              {cart?.length > 0 ? cart?.length : "0"}
             </span>
           </Link>
 

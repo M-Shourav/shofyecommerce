@@ -1,6 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ProductType } from "../../../type";
+import toast, { Toaster } from "react-hot-toast";
+import { DiVim } from "react-icons/di";
 
-const initialState = {
+interface InitialState {
+  cart: ProductType[];
+  userInfo: any;
+}
+const initialState: InitialState = {
   cart: [],
   userInfo: null,
 };
@@ -9,7 +16,17 @@ export const shofySlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      state.cart = action.payload;
+      const existingProduct = state?.cart.find(
+        (item) => item?.id === action?.payload?.id
+      );
+      if (existingProduct) {
+        toast.error("Product already available");
+      } else {
+        state.cart.push(action.payload);
+        toast.success(
+          `${action?.payload?.title.slice(0, 10)}... added successfully`
+        );
+      }
     },
     addUser: (state, action) => {
       state.userInfo = action.payload;
