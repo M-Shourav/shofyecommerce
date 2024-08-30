@@ -1,10 +1,13 @@
+"use client";
 import { navigation } from "@/app/constants";
 import Container from "../Container";
 import Link from "next/link";
 import { FiPhone } from "react-icons/fi";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosLogOut } from "react-icons/io";
+import { signOut, useSession } from "next-auth/react";
 
 const BottomHeader = () => {
+  const { data: session } = useSession();
   return (
     <div className="border-t-[1px] shadow-lg ">
       <Container className="flex items-center justify-between py-1 ">
@@ -18,6 +21,14 @@ const BottomHeader = () => {
               {item?.title} <IoIosArrowDown />
             </Link>
           ))}
+          {session && (
+            <button
+              onClick={() => signOut()}
+              className="flex items-center gap-x-1 text-sm text-gray-600  font-semibold "
+            >
+              <IoIosLogOut /> Signout
+            </button>
+          )}
         </div>
         <div className="hidden md:inline-flex items-center gap-x-3">
           <FiPhone className="text-2xl text-themeColor" />

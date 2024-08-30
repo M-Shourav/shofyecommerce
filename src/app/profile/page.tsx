@@ -1,5 +1,7 @@
+import Container from "@/components/Container";
+
 const ProfilePage = () => {
-  return <div>ProfilePage</div>;
+  return <Container className="py-5">ProfilePage</Container>;
 };
 
 export default ProfilePage;
