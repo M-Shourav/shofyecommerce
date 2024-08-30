@@ -16,6 +16,7 @@ const config: Config = {
         productsBg: "#E5F0FF",
         lightblue: "#0888FF",
         lightOrange: "#FEB343",
+        darkText: "#000000",
       },
       fontFamily: {
         bodyFont: ["Oregano", "cursive", "sans-serif"],

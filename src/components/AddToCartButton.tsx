@@ -2,7 +2,6 @@
 import { useDispatch } from "react-redux";
 import { ProductType } from "../../type";
 import { addToCart } from "@/app/redux/shofySlice";
-import toast, { Toaster } from "react-hot-toast";
 
 interface PropsType {
   product?: ProductType;

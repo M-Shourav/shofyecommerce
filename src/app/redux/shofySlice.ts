@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductType } from "../../../type";
 import toast, { Toaster } from "react-hot-toast";
-import { DiVim } from "react-icons/di";
 
 interface InitialState {
   cart: ProductType[];
