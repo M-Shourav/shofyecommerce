@@ -74,12 +74,7 @@ const MiddleHeader = () => {
                 <p className="text-xs font-medium text-gray-500">
                   Hello {session?.user?.name}
                 </p>
-                <button
-                  onClick={() => signOut()}
-                  className="text-base font-semibold"
-                >
-                  Logout
-                </button>
+                <Link href={"/profile"}>View Profile</Link>
               </div>
             </div>
           ) : (
