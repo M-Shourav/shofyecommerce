@@ -5,6 +5,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { IoEyeOutline } from "react-icons/io5";
 import AddToCartButton from "./AddToCartButton";
+import Link from "next/link";
 
 interface Props {
   product: ProductType;
@@ -33,16 +34,24 @@ const ProductCard = ({ product }: Props) => {
   return (
     <div className="border py-2 border-productsBg hover:shadow-lg rounded-md hover:shadow-black/20 duration-200 group overflow-hidden">
       <div className="relative">
-        <Image
-          src={product?.images[0]}
-          alt="product-image"
-          width={500}
-          height={500}
-          className="w-full h-64 object-contain group-hover:scale-110 duration-200"
-        />
-        <p className="absolute top-2 right-2 flex items-center gap-x-1 bg-lightblue px-2 py-1 text-lightBg/90 text-sm font-semibold rounded-md">
-          {product?.rating} <FaStar className="text-lightOrange" />
-        </p>
+        <Link
+          href={{
+            pathname: `/products/${product?.id}`,
+            query: { id: product?.id },
+          }}
+        >
+          <Image
+            src={product?.images[0]}
+            alt="product-image"
+            width={500}
+            height={500}
+            className="w-full h-64 object-contain group-hover:scale-110 duration-200"
+          />
+
+          <p className="absolute top-2 right-2 flex items-center gap-x-1 bg-lightblue px-2 py-1 text-lightBg/90 text-sm font-semibold rounded-md">
+            {product?.rating} <FaStar className="text-lightOrange" />
+          </p>
+        </Link>
         <SideBar />
         <AddToCartButton product={product} />
       </div>

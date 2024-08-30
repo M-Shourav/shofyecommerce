@@ -19,12 +19,29 @@ export const shofySlice = createSlice({
         (item) => item?.id === action?.payload?.id
       );
       if (existingProduct) {
-        toast.error("Product already available");
+        existingProduct.quantity += 1;
+        // toast.error("Product already available");
       } else {
-        state.cart.push(action.payload);
+        state.cart.push({ ...action.payload, quantity: 1 });
         toast.success(
           `${action?.payload?.title.slice(0, 10)}... added successfully`
         );
+      }
+    },
+    increaseItems: (state, action) => {
+      const existingProduct = state?.cart.find(
+        (item) => item?.id === action?.payload
+      );
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      }
+    },
+    decreaseItems: (state, action) => {
+      const existingProduct = state?.cart.find(
+        (item) => item?.id === action?.payload
+      );
+      if (existingProduct) {
+        existingProduct.quantity -= 1;
       }
     },
     addUser: (state, action) => {
@@ -36,6 +53,7 @@ export const shofySlice = createSlice({
   },
 });
 
-export const { addToCart, addUser, removeUser } = shofySlice.actions;
+export const { addToCart, addUser, removeUser, increaseItems, decreaseItems } =
+  shofySlice.actions;
 
 export default shofySlice.reducer;

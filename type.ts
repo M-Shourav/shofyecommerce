@@ -3,6 +3,7 @@ export interface ProductType {
   brand: string;
   category: string;
   description: string;
+  quantity: number;
   dimensions: {
     depth: number;
     height: number;
