@@ -1,14 +1,8 @@
 "use client";
 import { useSelector } from "react-redux";
 import { StateType } from "../../../type";
-import Container from "@/components/Container";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import Image from "next/image";
-import QuantityButton from "@/components/quantityBtn/QuantityButton";
 import Link from "next/link";
-import { LuPlus } from "react-icons/lu";
-import { HiMinus } from "react-icons/hi";
-import { IoCloseOutline } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
 const CartProducts = () => {
   const { cart } = useSelector((state: StateType) => state?.shopy);

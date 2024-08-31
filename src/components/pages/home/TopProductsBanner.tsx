@@ -43,7 +43,8 @@ const TopProductsBanner = () => {
       <Container className="py-10 lg:py-20">
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-3 items-start">
           {ProductsArr?.map((item) => (
-            <div
+            <Link
+              href={item?.href}
               key={item?.title}
               className="flex flex-col gap-y-2 w-full items-center h-[250px] py-4 group"
             >
@@ -58,16 +59,12 @@ const TopProductsBanner = () => {
                 />
               </div>
               <div className="mt-2 text-center">
-                <Link
-                  href={item?.href}
-                  key={item?.title}
-                  className="text-base font-semibold hover:text-lightblue duration-200"
-                >
+                <p className="text-base font-semibold hover:text-lightblue duration-200">
                   {item?.title}
-                </Link>
+                </p>
                 <p className="text-sm text-gray-500">{item?.description}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </Container>

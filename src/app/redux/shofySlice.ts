@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductType } from "../../../type";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 interface InitialState {
   cart: ProductType[];
@@ -19,29 +19,30 @@ export const shofySlice = createSlice({
         (item) => item?.id === action?.payload?.id
       );
       if (existingProduct) {
-        existingProduct.quantity += 1;
-        // toast.error("Product already available");
+        existingProduct.quantity! += 1;
       } else {
         state.cart.push({ ...action.payload, quantity: 1 });
+
         toast.success(
           `${action?.payload?.title.slice(0, 10)}... added successfully`
         );
       }
     },
+
     increaseItems: (state, action) => {
-      const existingProduct = state?.cart.find(
+      const existingProduct = state.cart.find(
         (item) => item?.id === action?.payload
       );
       if (existingProduct) {
-        existingProduct.quantity += 1;
+        existingProduct.quantity! += 1;
       }
     },
     decreaseItems: (state, action) => {
-      const existingProduct = state?.cart.find(
+      const existingProduct = state.cart.find(
         (item) => item?.id === action?.payload
       );
       if (existingProduct) {
-        existingProduct.quantity -= 1;
+        existingProduct.quantity! -= 1;
       }
     },
     addUser: (state, action) => {
