@@ -7,8 +7,10 @@ import {
   increaseItems,
 } from "@/app/redux/shofySlice";
 import { useEffect, useState } from "react";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import { FaMinus, FaPlus, FaShoppingCart } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { twMerge } from "tailwind-merge";
+import { FaCartShopping } from "react-icons/fa6";
 interface PropsType {
   product?: ProductType;
 }
@@ -41,7 +43,7 @@ const AddToCartButton = ({ product }: PropsType) => {
   return (
     <>
       {existingProduct ? (
-        <div className="flex items-center justify-center gap-x-5 h-10 py-2 text-lg">
+        <div className="flex items-center justify-center gap-x-5 h-10 py-2  text-lg">
           <button
             onClick={handleMinus}
             disabled={existingProduct?.quantity === 1}
@@ -61,15 +63,23 @@ const AddToCartButton = ({ product }: PropsType) => {
           </button>
         </div>
       ) : (
-        <div
-          className=" text-center 
-        overflow-hidden "
-        >
+        <div className=" text-center">
           <button
             onClick={handleClick}
-            className="w-full bg-black hover:bg-themeColor py-1 text-themeWhite transform translate-y-10 group-hover:translate-y-0 duration-300"
+            className="relative inline-flex h-12 active:scale-95 transistion
+             overflow-hidden rounded-lg p-[1px] focus:outline-none w-full"
           >
-            Add to cart
+            <span
+              className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] 
+            bg-[conic-gradient(from_90deg_at_50%_50%,#e7029a_0%,#f472b6_50%,#bd5fff_100%)]"
+            />
+            <span
+              className="inline-flex h-full w-full cursor-pointer items-center
+             justify-center rounded-lg bg-slate-950 px-7 text-base font-medium
+             text-white backdrop-blur-3xl gap-2 undefined"
+            >
+              Add to cart <FaShoppingCart />
+            </span>
           </button>
         </div>
       )}
