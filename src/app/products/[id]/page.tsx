@@ -1,10 +1,11 @@
 import { getData } from "@/app/helpers";
 import AddToCartButton from "@/components/AddToCartButton";
 import Container from "@/components/Container";
-import PriceFormatted from "@/components/PriceFormatted";
 import ProductImage from "@/components/ProductImage";
 import ProductPrice from "@/components/ProductPrice";
+import RatingStars from "@/components/RatingStars";
 import SavingPrice from "@/components/SavingPrice";
+import { FaStar } from "react-icons/fa";
 
 interface Props {
   params: {
@@ -29,7 +30,10 @@ const SinglePage = async ({ params }: Props) => {
             discountPrice={discountPrice}
             product={product}
           />
-          <p>({product?.rating} reviews)</p>
+          <div className="flex items-center justify-center">
+            <RatingStars rating={product?.rating} />
+            <p>({product?.rating} reviews)</p>
+          </div>
         </div>
         <SavingPrice product={product} />
         <p className="text-sm tracking-wide text-darkText">

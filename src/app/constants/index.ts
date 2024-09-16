@@ -24,16 +24,15 @@ export const informationArray = [
   { title: "Latest News", href: "#" },
   { title: "Contact Us", href: "#" },
 ];
-
 /*
 export const banner = [
   {
     _id: 1001,
     priceText: "Starting at $274.00",
     Title: "The best tablet collection 2024",
-    description: `  Exclusive offers <span className="text-[#ebd63a]">-35%</span> off
-    this week`,
-
+    textOne: "Exclusive offer",
+    offerPrice: "-30%",
+    textTwo: "off this week",
     buttonLink: "/products",
     image: BannerOneImage,
   },

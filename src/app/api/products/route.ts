@@ -1,9 +1,9 @@
-import { banner } from "@/app/constants";
+// import { banner } from "@/app/constants";
 import { NextResponse } from "next/server";
 
-export const GET = () => {
+export const GET = async () => {
   return NextResponse.json({
-    banner: banner,
+    // banner: banner,
     status: "success",
     message: "keep alive !",
   });

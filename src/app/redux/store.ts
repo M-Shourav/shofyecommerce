@@ -13,6 +13,12 @@ export const store = configureStore({
   reducer: {
     shopy: persistedReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["persist/PERSIST"],
+      },
+    }),
 });
 
 export const persiststore = persistStore(store);

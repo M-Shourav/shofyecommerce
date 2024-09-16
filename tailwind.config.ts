@@ -17,9 +17,12 @@ const config: Config = {
         lightblue: "#0888FF",
         lightOrange: "#FEB343",
         darkText: "#000000",
+        bannerbg: "#115061",
+        grays: "#E3ECF7",
       },
       fontFamily: {
         bodyFont: ["Oregano", "cursive", "sans-serif"],
+        bannerFont: ["Oregano", "sans-serif"],
       },
     },
   },

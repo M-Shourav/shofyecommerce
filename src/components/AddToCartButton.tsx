@@ -47,17 +47,17 @@ const AddToCartButton = ({ product }: PropsType) => {
           <button
             onClick={handleMinus}
             disabled={existingProduct?.quantity === 1}
-            className="h-full w-12 border  border-sky-300 rounded-full flex
-          items-center justify-center hover:bg-slate-200 duration-200
-           disabled:text-red-500 "
+            className="h-10 w-10 border border-sky-300 rounded-full flex
+          items-center justify-center bg-slate-200 hover:bg-darkText hover:text-lightBg duration-200
+            disabled:text-red-500"
           >
             <FaMinus />
           </button>
-          <span className="text-lg">{existingProduct?.quantity}</span>
+          <span className="text-xl">{existingProduct?.quantity}</span>
           <button
             onClick={handlePlus}
-            className="h-full w-12 border  border-sky-300 rounded-full flex
-          items-center justify-center hover:bg-slate-200 duration-200"
+            className="h-10 w-10 border border-sky-300 rounded-full flex
+          items-center justify-center bg-slate-200 hover:bg-darkText hover:text-lightBg duration-200"
           >
             <FaPlus />
           </button>

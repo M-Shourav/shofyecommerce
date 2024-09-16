@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import Title from "../Title";
 import Button from "../ui/Button";
-import { useSelector } from "react-redux";
-import { StateType } from "../../../type";
+import { ProductType, StateType } from "../../../type";
 import PriceFormatted from "../PriceFormatted";
+import { useSession } from "next-auth/react";
+import Email from "next-auth/providers/email";
 
-const CartSummary = () => {
-  const { cart } = useSelector((state: StateType) => state?.shopy);
+interface cartPrpos {
+  cart: ProductType[];
+}
+const CartSummary = ({ cart }: cartPrpos) => {
   const [totaleamount, setTotalamount] = useState(0);
   const [discountprice, setDiscountprice] = useState(0);
   useEffect(() => {
@@ -22,6 +25,21 @@ const CartSummary = () => {
       setDiscountprice(discount);
     }
   }, [cart]);
+  const { data: session } = useSession();
+  const handleClick = async () => {
+    const response = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        item: cart,
+        email: session?.user?.email,
+      }),
+    });
+    console.log("res", await response.json());
+  };
+
   return (
     <div className="flex flex-col gap-7  bg-gray-300 px-4 py-10 sm:p-6 lg:col-span-5 mt-16 lg:mt-0 rounded-lg">
       <Title>Cart Summary</Title>
@@ -40,7 +58,10 @@ const CartSummary = () => {
           className="text-lg font-semibold"
         />
       </div>
-      <Button className="rounded-md bg-black text-white hover:bg-yellow-400 hover:text-black duration-300">
+      <Button
+        onClick={handleClick}
+        className="rounded-md bg-black text-white hover:bg-yellow-400 hover:text-black duration-300"
+      >
         Checkout
       </Button>
     </div>

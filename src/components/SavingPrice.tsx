@@ -1,13 +1,16 @@
 "use client";
-import { FaCheck } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
 import PriceFormatted from "./PriceFormatted";
-import { useSelector } from "react-redux";
+import { FaCheck } from "react-icons/fa";
 import { ProductType, StateType } from "../../type";
-import { useEffect, useState } from "react";
-const SavingPrice = ({ product }: any) => {
+import { useSelector } from "react-redux";
+interface props {
+  product: ProductType;
+}
+const SavingPrice = ({ product }: props) => {
   const regularPrice = product?.price;
-  const discountPrice = (product?.price + product?.discountPercentage) / 100;
-
+  const discountPercentage = product?.discountPercentage;
+  const discountAmount = (regularPrice * discountPercentage) / 100;
   const { cart } = useSelector((state: StateType) => state.shopy);
   const [existingProduct, setExistingProduct] = useState<ProductType | null>(
     null
@@ -28,13 +31,13 @@ const SavingPrice = ({ product }: any) => {
       <p className="text-sm">
         You are saving{" "}
         <PriceFormatted
-          className="text-sm text-green-500"
+          className="text-semibold text-green-500"
           amount={
             existingProduct
-              ? (regularPrice - discountPrice) / 100
-              : regularPrice
+              ? discountAmount * existingProduct?.quantity
+              : discountAmount
           }
-        />{" "}
+        />
         upon purchase
       </p>
     </div>
