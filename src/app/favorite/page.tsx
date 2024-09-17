@@ -1,7 +1,7 @@
 import Container from "@/components/Container";
 
-const Favoritepage = () => {
-  return <Container>Favoritepage</Container>;
+const FavoritePage = () => {
+  return <Container>FavoritePage</Container>;
 };
 
-export default Favoritepage;
+export default FavoritePage;

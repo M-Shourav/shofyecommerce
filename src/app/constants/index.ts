@@ -1,5 +1,3 @@
-import { BannerOneImage } from "@/assets";
-
 export const navigation = [
   { title: "Home", href: "/" },
   { title: "Products", href: "/products" },

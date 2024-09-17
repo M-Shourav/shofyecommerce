@@ -9,7 +9,6 @@ interface Props {
 
 const ProductImage = ({ images }: Props) => {
   const [currentImage, setCurrentImage] = useState(images[0]);
-
   return (
     <div className="w-full md:w-1/2 flex items-start gap-2.5">
       <div className="flex flex-col gap-y-1">
@@ -26,7 +25,7 @@ const ProductImage = ({ images }: Props) => {
               alt="productImage"
               width={200}
               height={200}
-              className="w-full h-full object-contain p-3"
+              className="w-full h-full object-contain p-3 cursor-pointer"
             />
           </div>
         ))}

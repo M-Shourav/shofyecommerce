@@ -9,8 +9,6 @@ import {
 import { useEffect, useState } from "react";
 import { FaMinus, FaPlus, FaShoppingCart } from "react-icons/fa";
 import toast from "react-hot-toast";
-import { twMerge } from "tailwind-merge";
-import { FaCartShopping } from "react-icons/fa6";
 interface PropsType {
   product?: ProductType;
 }
@@ -33,8 +31,14 @@ const AddToCartButton = ({ product }: PropsType) => {
   };
 
   const handlePlus = () => {
-    dispatch(increaseItems(product?.id));
-    toast.success(`Quantity Increase successfully!`);
+    if (existingProduct && product) {
+      if (existingProduct.quantity < product.stock) {
+        dispatch(increaseItems(product?.id));
+        toast.success(`Quantity Increase successfully!`);
+      } else {
+        toast.error(`Cannot add more than available stock (${product.stock})`);
+      }
+    }
   };
   const handleMinus = () => {
     dispatch(decreaseItems(product?.id));

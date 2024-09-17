@@ -2,7 +2,6 @@ import { getData } from "@/app/helpers";
 import { ProductType } from "../../type";
 import Container from "./Container";
 import ProductCard from "./ProductCard";
-import Title from "./Title";
 
 export default async function ProductsList() {
   const endpoint = "https://dummyjson.com/products";

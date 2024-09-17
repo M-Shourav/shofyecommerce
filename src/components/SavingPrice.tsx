@@ -25,7 +25,13 @@ const SavingPrice = ({ product }: props) => {
     <div>
       {product?.availabilityStatus && (
         <p className="flex items-center gap-x-1 text-sm font-semibold text-gray-700">
-          <FaCheck className="text-green-500" /> In Stock
+          {product?.stock ? (
+            <p className="flex items-center gap-1">
+              <FaCheck className="text-green-500 " /> In Stock
+            </p>
+          ) : (
+            "Out of Stock"
+          )}
         </p>
       )}
       <p className="text-sm">
