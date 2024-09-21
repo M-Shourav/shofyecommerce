@@ -128,7 +128,7 @@ const SinglePage = async ({ params }: Props) => {
         </p>
         <h1 className="flex items-center gap-2">
           Tags:
-          {product?.tags.map((item: string, index: any) => (
+          {product?.tags.map((item: string, index: number) => (
             <p key={index} className=" font-semibold tracking-wide">
               {item}
             </p>

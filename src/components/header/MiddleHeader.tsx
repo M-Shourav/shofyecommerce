@@ -24,7 +24,7 @@ const MiddleHeader = () => {
     } else {
       dispatch(removeUser());
     }
-  }, [session?.user]);
+  }, [session?.user, dispatch]);
 
   return (
     <Container className="flex items-center justify-between gap-5 py-5">
