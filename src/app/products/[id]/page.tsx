@@ -8,12 +8,7 @@ import SavingPrice from "@/components/SavingPrice";
 import Link from "next/link";
 import { BsTwitterX } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaWhatsapp,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { IoLogoWhatsapp } from "react-icons/io5";
 import { SlSocialInstagram } from "react-icons/sl";
@@ -133,8 +128,10 @@ const SinglePage = async ({ params }: Props) => {
         </p>
         <h1 className="flex items-center gap-2">
           Tags:
-          {product?.tags.map((item: string) => (
-            <p className=" font-semibold tracking-wide">{item}</p>
+          {product?.tags.map((item: string, index: any) => (
+            <p key={index} className=" font-semibold tracking-wide">
+              {item}
+            </p>
           ))}
         </h1>
         <AddToCartButton product={product} />

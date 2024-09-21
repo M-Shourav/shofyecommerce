@@ -4,7 +4,7 @@ import Button from "../ui/Button";
 import { ProductType, StateType } from "../../../type";
 import PriceFormatted from "../PriceFormatted";
 import { useSession } from "next-auth/react";
-import Email from "next-auth/providers/email";
+import { loadStripe } from "@stripe/stripe-js";
 
 interface cartPrpos {
   cart: ProductType[];
@@ -26,7 +26,13 @@ const CartSummary = ({ cart }: cartPrpos) => {
     }
   }, [cart]);
   const { data: session } = useSession();
-  const handleClick = async () => {
+
+  const stripePromise = loadStripe(
+    "pk_test_51Q0jwXJwegIscnyF2Z0OkeGyeaAEDaAekoQ5Me8SpcfDnbQDdYeAOSS2IropeuoWLZQyQJHGDs9CS07NRYIHQU6q00clUrYbKj"
+  );
+  const handleCheckout = async () => {
+    const stripe = await stripePromise;
+
     const response = await fetch("/api/checkout", {
       method: "POST",
       headers: {
@@ -37,7 +43,15 @@ const CartSummary = ({ cart }: cartPrpos) => {
         email: session?.user?.email,
       }),
     });
-    console.log("res", await response.json());
+    const checkoutSession = await response.json();
+
+    const result: any = await stripe?.redirectToCheckout({
+      sessionId: checkoutSession.id,
+    });
+
+    if (result.error) {
+      alert(result?.error?.message);
+    }
   };
 
   return (
@@ -59,7 +73,7 @@ const CartSummary = ({ cart }: cartPrpos) => {
         />
       </div>
       <Button
-        onClick={handleClick}
+        onClick={handleCheckout}
         className="rounded-md bg-black text-white hover:bg-yellow-400 hover:text-black duration-300"
       >
         Checkout

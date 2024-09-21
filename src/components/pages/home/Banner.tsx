@@ -35,7 +35,7 @@ const Banner = () => {
       showStatus={false}
       showIndicators={false}
       showThumbs={false}
-      interval={5000}
+      interval={10000}
     >
       <div className=" bg-bannerbg text-themeWhite py-10 relative">
         <Container className="flex items-center justify-between gap-10">

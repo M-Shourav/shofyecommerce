@@ -4,7 +4,7 @@ import Container from "../Container";
 import Link from "next/link";
 import { FiPhone } from "react-icons/fi";
 import { IoIosArrowDown, IoIosLogOut } from "react-icons/io";
-import { signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const BottomHeader = () => {
   const { data: session } = useSession();
@@ -27,6 +27,14 @@ const BottomHeader = () => {
               className="flex items-center gap-x-1 text-sm text-gray-600  font-semibold "
             >
               <IoIosLogOut /> Signout
+            </button>
+          )}
+          {!session?.user && (
+            <button
+              onClick={() => signIn()}
+              className="hover:text-themeColor duration-300 cursor-pointer"
+            >
+              Please login to view your cart
             </button>
           )}
         </div>
