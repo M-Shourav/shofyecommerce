@@ -9,7 +9,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 const BottomHeader = () => {
   const { data: session } = useSession();
   return (
-    <div className="border-t-[1px] shadow-lg ">
+    <div className="border-t-[1px] shadow-lg">
       <Container className="flex items-center justify-between py-1 ">
         <div className="hidden md:inline-flex items-center gap-5 text-sm font-semibold">
           {navigation?.map((item) => (

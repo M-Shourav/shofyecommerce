@@ -8,7 +8,7 @@ const Header = () => {
     <>
       <TopHeader />
       <MiddleHeader />
-      <header className=" sticky top-0 z-50 bg-themeWhite">
+      <header className=" ">
         <BottomHeader />
       </header>
     </>

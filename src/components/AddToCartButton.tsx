@@ -14,6 +14,7 @@ interface PropsType {
 }
 const AddToCartButton = ({ product }: PropsType) => {
   const { cart } = useSelector((state: StateType) => state.shopy);
+
   const [existingProduct, setExistingProduct] = useState<ProductType | null>(
     null
   );

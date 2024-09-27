@@ -1,7 +1,7 @@
-import React from "react";
+import Container from "@/components/Container";
 
 const SuccessPage = () => {
-  return <div>SuccessPage</div>;
+  return <Container>SuccessPage</Container>;
 };
 
 export default SuccessPage;

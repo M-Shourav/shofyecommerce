@@ -4,7 +4,7 @@ import Container from "../Container";
 import { logo } from "@/assets";
 import { useEffect, useState } from "react";
 import { IoClose, IoSearch } from "react-icons/io5";
-import { RiMenu3Fill, RiUserLine } from "react-icons/ri";
+import { RiUserLine } from "react-icons/ri";
 import { FiHeart } from "react-icons/fi";
 import { BsBag } from "react-icons/bs";
 import Link from "next/link";
@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { StateType } from "../../../type";
 import { addUser, removeUser } from "@/app/redux/shofySlice";
+import MobileNavigation from "../MobileNavigation";
 
 const MiddleHeader = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -117,13 +118,7 @@ const MiddleHeader = () => {
               {cart?.length > 0 ? cart?.length : "0"}
             </span>
           </Link>
-
-          <div
-            className="md:hidden inline-flex text-3xl cursor-pointer
-          hover:text-themeColor duration-200"
-          >
-            <RiMenu3Fill />
-          </div>
+          <MobileNavigation />
         </div>
       </div>
     </Container>
