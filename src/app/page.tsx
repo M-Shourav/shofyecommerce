@@ -1,3 +1,4 @@
+import MainLoader from "@/components/MainLoader";
 import Banner from "@/components/pages/home/Banner";
 import TopProductsBanner from "@/components/pages/home/TopProductsBanner";
 import ProductList from "@/components/ProductList";

@@ -1,33 +1,11 @@
 "use client";
-import {
-  product1,
-  product2,
-  Shap_1,
-  Shap_2,
-  Slider_1,
-  Slider_2,
-  Slider_3,
-} from "@/assets";
+import { Slider_1, Slider_2, Slider_3 } from "@/assets";
 import Container from "@/components/Container";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
-import { delay, motion } from "framer-motion";
-import { GoArrowRight } from "react-icons/go";
-/*
-const getData = async () => {
-  const response = await fetch(`${process.env.API_URL}api/products`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json",
-    },
-  });
-  return response.json();
-};
-*/
 
 const Banner = () => {
-  // const { banner } = await getData();
   return (
     <Carousel
       autoPlay={true}
@@ -35,10 +13,11 @@ const Banner = () => {
       showStatus={false}
       showIndicators={false}
       showThumbs={false}
-      interval={10000}
+      interval={5000}
+      transitionTime={2500}
     >
       <div className=" bg-bannerbg text-themeWhite py-10 relative">
-        <Container className="flex items-center justify-between gap-10">
+        <Container className="flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="text-start flex flex-col gap-y-3">
             <p className="text-xs font-semibold tracking-wide text-themeWhite/90">
               Starting at $274.00
@@ -64,7 +43,7 @@ const Banner = () => {
         </Container>
       </div>
       <div className=" bg-bannerbg text-themeWhite py-10 relative">
-        <Container className="flex items-center justify-between gap-10">
+        <Container className="flex flex-col md:flex-row  items-center justify-between gap-10">
           <div className="text-start flex flex-col gap-y-3">
             <p className="text-xs font-semibold tracking-wide text-themeWhite/90">
               Starting at $999.00
@@ -90,7 +69,7 @@ const Banner = () => {
         </Container>
       </div>
       <div className=" bg-grays text-darkText py-10">
-        <Container className="flex items-center justify-between gap-10">
+        <Container className="flex flex-col md:flex-row  items-center justify-between gap-10">
           <div className="text-start flex flex-col gap-y-3">
             <p className="text-xs  tracking-wide text-darkText">
               Starting at <span className="text-sm font-semibold">$999.00</span>
