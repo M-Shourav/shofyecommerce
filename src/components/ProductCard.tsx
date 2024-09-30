@@ -1,37 +1,14 @@
 import Image from "next/image";
 import { ProductType } from "../../type";
-import { FaStar } from "react-icons/fa";
-import { FiShoppingCart } from "react-icons/fi";
-import { MdOutlineFavoriteBorder } from "react-icons/md";
-import { IoEyeOutline } from "react-icons/io5";
 import AddToCartButton from "./AddToCartButton";
 import Link from "next/link";
 import ProductPrice from "./ProductPrice";
 import RatingStars from "./RatingStars";
+import Sidebar from "./Sidebar";
 
 interface Props {
   product: ProductType;
 }
-
-const SideBar = () => {
-  return (
-    <div
-      className="absolute bottom-10 right-2 bg-themeWhite flex flex-col 
-    text-2xl gap-y-3 border px-2 py-2 rounded-md transform translate-x-20 overflow-hidden group-hover:translate-x-0 duration-300"
-    >
-      <Link href={"/cart"} className="hoverEffect">
-        <FiShoppingCart />
-      </Link>
-      <button className="hoverEffect border-y border-y-black">
-        <IoEyeOutline />
-      </button>
-      <button className="hoverEffect">
-        <MdOutlineFavoriteBorder />
-      </button>
-    </div>
-  );
-};
-
 const ProductCard = ({ product }: Props) => {
   const regularPrice = product?.price;
   const discountPrice = product?.price + product?.discountPercentage / 100;
@@ -57,7 +34,7 @@ const ProductCard = ({ product }: Props) => {
             {product?.discountPercentage} %
           </p>
         </Link>
-        <SideBar />
+        <Sidebar product={product} />
       </div>
       <div className="border-t border-t-productsBg py-2 px-4 flex flex-col gap-y-1">
         <div className="flex items-center justify-between">

@@ -4,10 +4,12 @@ import toast from "react-hot-toast";
 
 interface InitialState {
   cart: ProductType[];
+  favorite: ProductType[];
   userInfo: any;
 }
 const initialState: InitialState = {
   cart: [],
+  favorite: [],
   userInfo: null,
 };
 export const shofySlice = createSlice({
@@ -54,6 +56,33 @@ export const shofySlice = createSlice({
     removeUser: (state) => {
       state.userInfo = null;
     },
+    removeCart: (state, action) => {
+      state.cart = state.favorite.filter((item) => item?.id !== action.payload);
+    },
+    resetCart: (state) => {
+      state.cart = [];
+    },
+
+    addToFavorite: (state, action) => {
+      const existingProduct = state?.favorite.find(
+        (item) => item?.id === action.payload.id
+      );
+      if (existingProduct) {
+        state.favorite = state.favorite.filter(
+          (item) => item?.id !== action.payload.id
+        );
+      } else {
+        state.favorite.push(action.payload);
+      }
+    },
+    resetFavorite: (state) => {
+      state.favorite = [];
+    },
+    deletefavItems: (state, action) => {
+      state.favorite = state.favorite.filter(
+        (item) => item?.id !== action.payload
+      );
+    },
   },
 });
 
@@ -64,6 +93,11 @@ export const {
   increaseItems,
   decreaseItems,
   deleteItems,
+  removeCart,
+  resetCart,
+  resetFavorite,
+  addToFavorite,
+  deletefavItems,
 } = shofySlice.actions;
 
 export default shofySlice.reducer;

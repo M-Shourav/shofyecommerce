@@ -1,7 +1,11 @@
 import Container from "@/components/Container";
-
+import FavoriteProducts from "@/components/favorite/FavoriteProducts";
 const FavoritePage = () => {
-  return <Container>FavoritePage</Container>;
+  return (
+    <Container>
+      <FavoriteProducts />
+    </Container>
+  );
 };
 
 export default FavoritePage;

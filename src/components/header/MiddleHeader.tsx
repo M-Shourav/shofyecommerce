@@ -18,7 +18,7 @@ const MiddleHeader = () => {
   const [searchValue, setSearchValue] = useState("");
   const { data: session } = useSession();
   const dispatch = useDispatch();
-  const { cart } = useSelector((state: StateType) => state?.shopy);
+  const { cart, favorite } = useSelector((state: StateType) => state?.shopy);
   useEffect(() => {
     if (session?.user) {
       dispatch(addUser(session?.user));
@@ -103,7 +103,7 @@ const MiddleHeader = () => {
               className="w-5 h-5 bg-themeColor rounded-full flex items-center justify-center
              text-white text-xs absolute -top-2 -right-2 "
             >
-              0
+              {favorite?.length > 0 ? favorite?.length : "0"}
             </span>
           </Link>
           <Link
