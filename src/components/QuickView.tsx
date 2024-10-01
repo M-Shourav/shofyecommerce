@@ -15,10 +15,13 @@ const quickview = ({ product }: Props) => {
   let [isOpen, setIsOpen] = useState(false);
   const regularPrice = product?.price;
   const discountPrice = product?.price + product?.discountPercentage / 100;
+  const toggleButton = () => {
+    setIsOpen(true);
+  };
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={toggleButton}
         className="hoverEffect border-y border-y-black"
       >
         <IoEyeOutline />
