@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { addToFavorite } from "@/app/redux/shofySlice";
 import toast from "react-hot-toast";
-import QuickView from "./QuickView";
+import Quickview from "./QuickView";
 const Sidebar = ({ product }: { product: ProductType }) => {
   const dispatch = useDispatch();
   const { favorite } = useSelector((state: StateType) => state.shopy);
@@ -40,7 +40,7 @@ const Sidebar = ({ product }: { product: ProductType }) => {
       <Link href={"/cart"} className="hoverEffect">
         <FiShoppingCart />
       </Link>
-      <QuickView product={product} />
+      <Quickview product={product} />
       <button onClick={handleFavorite} className="hoverEffect">
         {existingProduct ? <MdFavorite /> : <MdOutlineFavoriteBorder />}
       </button>

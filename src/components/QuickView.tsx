@@ -11,7 +11,7 @@ import AddToCartButton from "./AddToCartButton";
 interface Props {
   product: ProductType;
 }
-const quickview = ({ product }: Props) => {
+const Quickview = ({ product }: Props) => {
   let [isOpen, setIsOpen] = useState(false);
   const regularPrice = product?.price;
   const discountPrice = product?.price + product?.discountPercentage / 100;
@@ -82,7 +82,7 @@ const quickview = ({ product }: Props) => {
                       Tags:
                       {product?.tags.map((item: string, index: number) => (
                         <p key={index} className=" tracking-wide">
-                          {item} {item && ","}
+                          {item} {index < product.tags.length - 1 && ", "}
                         </p>
                       ))}
                     </h1>
@@ -97,4 +97,4 @@ const quickview = ({ product }: Props) => {
   );
 };
 
-export default quickview;
+export default Quickview;
