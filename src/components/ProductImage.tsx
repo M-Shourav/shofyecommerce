@@ -2,15 +2,19 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
   images: string[];
+  className?: string;
 }
 
-const ProductImage = ({ images }: Props) => {
+const ProductImage = ({ images, className }: Props) => {
   const [currentImage, setCurrentImage] = useState(images[0]);
   return (
-    <div className="w-full md:w-1/2 flex items-start gap-2.5">
+    <div
+      className={twMerge("w-full md:w-1/2 flex items-start gap-2.5", className)}
+    >
       <div className="flex flex-col gap-y-1">
         {images?.map((item, index) => (
           <div
@@ -34,8 +38,8 @@ const ProductImage = ({ images }: Props) => {
         <Image
           src={currentImage}
           alt="ProductsImage"
-          width={500}
-          height={500}
+          width={200}
+          height={200}
           className="w-80 h-80 object-contain border border-themeColor/50 rounded-md"
         />
       </div>

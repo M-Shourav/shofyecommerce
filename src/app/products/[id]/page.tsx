@@ -135,6 +135,7 @@ const SinglePage = async ({ params }: Props) => {
           ))}
         </h1>
         <AddToCartButton product={product} />
+
         <div className="flex items-center gap-3">
           <h3 className="font-semibold">Share:</h3>
           <Links />

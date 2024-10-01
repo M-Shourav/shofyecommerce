@@ -1,9 +1,8 @@
 "use client";
 import { navigation } from "@/app/constants";
-import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import Link from "next/link";
 import { useState } from "react";
-
 import { CiMenuFries } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
 import SocialLinks from "./SocialLinks";

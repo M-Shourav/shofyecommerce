@@ -15,7 +15,7 @@ const ProductPrice = ({ regularPrice, discountPrice, product }: any) => {
   }, [cart, product]);
 
   return (
-    <div className="flex items-center gap-10">
+    <div className="flex items-center gap-5 md:gap-3">
       <PriceFormatted
         className="text-base text-gray-700 line-through"
         amount={
