@@ -1,8 +1,8 @@
-import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+"use client ";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import { useState } from "react";
 import { IoCloseOutline, IoEyeOutline } from "react-icons/io5";
 import { ProductType } from "../../type";
-import Image from "next/image";
 import ProductImage from "./ProductImage";
 import ProductPrice from "./ProductPrice";
 import RatingStars from "./RatingStars";
